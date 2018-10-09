@@ -40,6 +40,8 @@ saul.getLicense()
     if(err.code == 'EEXIST') {
       console.error('There\'s already a LICENSE file here:')
       console.error(err.path)
+    } else if (err.hasOwnProperty('response') && err.response.status == 401) {
+      console.error('Invalid token. Use GITHUB_TOKEN environment variable or --token flag.')
     } else {
       console.error(err)
     }
