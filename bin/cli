@@ -1,0 +1,47 @@
+#!/usr/bin/env node
+
+const { promises: fs } = require('fs')
+const path = require('path')
+const program = require('commander')
+const packageJson = require('../package.json')
+
+// Boilerplating for CLI
+program
+  .description('Generates a random LICENSE file in current directory')
+  .version(packageJson.version, '-v, --version')
+  .option('--token [token]', 'A Github token')
+  .parse(process.argv);
+
+if(program.token && program.token !== true) process.env.GITHUB_TOKEN = program.token
+if(program.token && program.token === true) {
+  console.error('Invalid argument: \n--token expects a string')
+  program.outputHelp(() => process.exit(1))
+}
+
+// Let's get started.
+const saul = require('../')
+
+saul.getLicense()
+  .then((license) => {
+    // We dont care much about the writeFile's resolved value,
+    // but want to keep passing the license object
+    return (async () => {
+      license.filePath = path.join(...[process.cwd(), 'LICENSE'])
+      await fs.writeFile(license.filePath, license.body, {encoding: 'utf8', flag: 'wx'})
+      delete license.body
+      return license
+    })()
+  })
+  .then(() => {
+    console.log('Success!')
+    console.log(`Wrote the ${license.name} license to ${license.filePath}`)
+  })
+  .catch((err) => {
+    if(err.code == 'EEXIST') {
+      console.error('There\'s already a LICENSE file here:')
+      console.error(err.path)
+    } else {
+      console.error(err)
+    }
+    process.exit(1)
+  })
