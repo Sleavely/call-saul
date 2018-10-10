@@ -1,9 +1,13 @@
 #!/usr/bin/env node
 
-const { promises: fs } = require('fs')
+
+const fs = require('fs')
 const path = require('path')
 const program = require('commander')
+const util = require('util')
+
 const packageJson = require('../package.json')
+const writeFile = util.promisify(fs.writeFile)
 
 // Boilerplating for CLI
 program
@@ -27,7 +31,7 @@ saul.getLicense()
     // but want to keep passing the license object
     return (async () => {
       license.filePath = path.join(...[process.cwd(), 'LICENSE'])
-      await fs.writeFile(license.filePath, license.body, {encoding: 'utf8', flag: 'wx'})
+      await writeFile(license.filePath, license.body, {encoding: 'utf8', flag: 'wx'})
       delete license.body
       return license
     })()
