@@ -32,7 +32,7 @@ saul.getLicense()
       return license
     })()
   })
-  .then(() => {
+  .then((license) => {
     console.log('Success!')
     console.log(`Wrote the ${license.name} license to ${license.filePath}`)
   })
