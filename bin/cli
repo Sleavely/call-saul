@@ -30,7 +30,7 @@ saul.getLicense()
     // We dont care much about the writeFile's resolved value,
     // but want to keep passing the license object
     return (async () => {
-      license.filePath = path.join(...[process.cwd(), 'LICENSE'])
+      license.filePath = path.join(process.cwd(), 'LICENSE')
       await writeFile(license.filePath, license.body, {encoding: 'utf8', flag: 'wx'})
       delete license.body
       return license
