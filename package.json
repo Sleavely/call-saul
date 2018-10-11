@@ -9,8 +9,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "cli",
+    "license",
+    "breaking-bad"
+  ],
   "author": "Joakim Hedlund <contact@joakimhedlund.com>",
+  "repository": "Sleavely/call-saul",
   "license": "MIT",
   "dependencies": {
     "commander": "^2.19.0",
