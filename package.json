@@ -20,5 +20,10 @@
   "dependencies": {
     "commander": "^2.19.0",
     "graphql-request": "^1.8.2"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "nock": "^10.0.1"
   }
 }
