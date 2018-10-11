@@ -1,4 +1,5 @@
-# call-saul
+# call-saul [![Build Status](https://travis-ci.org/Sleavely/call-saul.svg?branch=master)](https://travis-ci.org/Sleavely/call-saul)
+
 
 > Randomly 🎲 select a license 📝 for your project.
 
