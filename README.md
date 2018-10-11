@@ -14,11 +14,10 @@ npm install -g call-saul
 
 Next, you'll need a personal access token to use Github's API. You can create one at https://github.com/settings/tokens
 
-The token can be fed to Saul in one of three ways:
+The token can be fed to Saul in two ways:
 
-- Make it a temporary environment variable in your terminal by running `export GITHUB_TOKEN=abc123`.
-- Create a `.env` file with the `GITHUB_TOKEN` in the directory of the _call-saul_ module.
-- Call the CLI with the `--token` flag followed by the token.
+- Using an environment variable: `GITHUB_TOKEN=abc123`.
+- Call the CLI with the `--token abc123` flag.
 
 ## Usage
 

@@ -1,8 +1,12 @@
-require('dotenv').config()
 
 const { GraphQLClient } = require('graphql-request')
 
 const getLicense = async () => {
+
+  if(!process.env.GITHUB_TOKEN) {
+    throw new Error('No GITHUB_TOKEN defined!')
+  }
+
   const client = new GraphQLClient('https://api.github.com/graphql', {
     headers: {
       Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
