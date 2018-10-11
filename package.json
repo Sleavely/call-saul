@@ -1,6 +1,6 @@
 {
   "name": "call-saul",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Randomly 🎲 select a license 📝 for your project",
   "main": "./src/index.js",
   "bin": {
